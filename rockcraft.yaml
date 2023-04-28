@@ -1,17 +1,15 @@
 name: seaweedfs
 summary: SeaweedFS in a ROCK.
 description: "SeaweedFS is a fast distributed storage system for blobs, objects, files, and data lake, for billions of files! Blob store has O(1) disk seek, cloud tiering. Filer supports Cloud Drive, cross-DC active-active replication, Kubernetes, POSIX FUSE mount, S3 API, S3 Gateway, Hadoop, WebDAV, encryption, Erasure Coding."
-version: "3.44"
+version: "3.47"
 base: ubuntu:22.04
 build-base: ubuntu:22.04
 license: Apache-2.0
-
 services:
   seaweedfs:
     command: /usr/bin/weed -logtostderr=true server -master.port=9333 -volume.port=8080 -dir=/data
     override: replace
     startup: enabled
-
 platforms:
   amd64:
 parts:
@@ -19,7 +17,7 @@ parts:
     plugin: go
     source: https://github.com/seaweedfs/seaweedfs
     source-type: git
-    source-tag: "3.44"
+    source-tag: "3.47"
     build-snaps:
       - go/1.20/stable
     override-build: |
