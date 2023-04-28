@@ -5,8 +5,12 @@ version: "3.44"
 base: ubuntu:22.04
 build-base: ubuntu:22.04
 license: Apache-2.0
-entrypoint: ["/usr/bin/weed"]
-cmd: ["-logtostderr=true", "server", "-master.port=9333", "-volume.port=8080", "-dir=/data"]
+
+services:
+  seaweedfs:
+    command: /usr/bin/weed -logtostderr=true server -master.port=9333 -volume.port=8080 -dir=/data
+    override: replace
+    startup: enabled
 
 platforms:
   amd64:
